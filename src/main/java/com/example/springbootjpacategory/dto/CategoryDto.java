@@ -14,23 +14,21 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public class CategoryDto {
 
-    private Long categoryId;
-    private String branch;
-    private String name;
+    private Long id;
     private Integer level;
+    private String name;
     private Long parentCategoryId;
     private String parentCategoryName;
     private Map<Long, CategoryDto> children;
 
     public CategoryDto(Category entity) {
-        this.categoryId = entity.getId();
-        this.branch = entity.getBranch();
+        this.id = entity.getId();
         this.level = entity.getLevel();
         this.name = entity.getName();
 
         if(entity.getParentCategory() == null) {
             this.parentCategoryId = null;
-            this.parentCategoryName = "대분류";
+            this.parentCategoryName = "ROOT";
         } else {
             this.parentCategoryId = entity.getParentCategory().getId();
             this.parentCategoryName = entity.getParentCategory().getName();
@@ -42,7 +40,6 @@ public class CategoryDto {
 
     public Category toEntity () {
         return Category.builder()
-                .branch(branch)
                 .level(level)
                 .name(name)
                 .build();

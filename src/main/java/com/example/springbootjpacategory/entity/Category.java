@@ -20,10 +20,6 @@ public class Category {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //브랜치명
-    @Column (nullable = false)
-    private String branch;
-
     //카테고리 명
     @Column (nullable = false)
     private String name;
@@ -41,8 +37,7 @@ public class Category {
     private List<Category> subCategory = new ArrayList<>();
 
     @Builder
-    public Category(String branch, String name, Integer level,Category parentCategory) {
-        this.branch = branch;
+    public Category(String name, Integer level,Category parentCategory) {
         this.name = name;
         this.level = level;
         this.parentCategory = parentCategory;

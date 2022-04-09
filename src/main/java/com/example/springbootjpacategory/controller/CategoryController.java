@@ -19,18 +19,33 @@ public class CategoryController {
         return "hello";
     }
 
-    //save
+    //카테고리 저장
     @PostMapping("/save")
     public Long saveCategory (@RequestBody CategoryDto categoryDto) {
         return categoryService.saveCategory(categoryDto);
     }
 
-    //get
-    @GetMapping ("/get/{branch}")
-    public Map<String, CategoryDto> getCategoryByBranch (@PathVariable String branch) {
-        return categoryService.getCategoryByBranch(branch);
+    //전체카테고리 조회
+    @GetMapping ("/get")
+    public CategoryDto getCategoryAll () {
+        return categoryService.getCategoryAll();
     }
-    //delete
 
+    //id로 카테고리 조회
+    @GetMapping ("/get/{id}")
+    public CategoryDto getCategoryById (@PathVariable Long id) {
+        return categoryService.getCategoryById(id);
+    }
 
+    //카테고리 수정
+    @PutMapping("/update")
+    public Long updateCategory (@RequestBody CategoryDto categoryDto) {
+        return categoryService.updateCategory(categoryDto);
+    }
+
+    //카테고리 삭제
+    @DeleteMapping("/delete")
+    public void deleteCategory (@RequestBody CategoryDto categoryDto) {
+        categoryService.deleteCategory(categoryDto);
+    }
 }
