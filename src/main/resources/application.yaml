@@ -20,6 +20,11 @@ spring:
         format_sql: true
         show_sql: true
 
+  #Swagger2 ??? ???? ??
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
 logging:
   level:
     com.leesh: debug
