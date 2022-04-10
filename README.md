@@ -42,6 +42,7 @@ sudo /usr/sbin/alternatives --config java
 -java 버전 확인 (java 11)   
 java --version
 ```
+![003](https://user-images.githubusercontent.com/48856906/162619182-facba738-4ee5-446b-934a-510bfb85474d.PNG)
 
 3. 리눅스 서버에 git 설치
 ```
