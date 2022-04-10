@@ -1,6 +1,9 @@
 package com.leesh.springbootjpacategory.service;
 
+import com.leesh.springbootjpacategory.dto.CategoryDeleteDto;
 import com.leesh.springbootjpacategory.dto.CategoryDto;
+import com.leesh.springbootjpacategory.dto.CategorySaveDto;
+import com.leesh.springbootjpacategory.dto.CategoryUpdateDto;
 import com.leesh.springbootjpacategory.entity.Category;
 import com.leesh.springbootjpacategory.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,19 +17,18 @@ public class CategoryService {
 
     private final CategoryRepository categoryRepository;
 
-    /**
-     * 입력
-     * name
-     * parentCategoryId
-     */
     //카테고리 저장
-    public Long saveCategory (CategoryDto categoryDto) {
-
-        if(categoryDto.getName().toUpperCase().equals("ROOT")){
-            throw new RuntimeException("카테고리명을 'ROOT' 로 설정 할 수 없습니다.");
-        }
+    public Long saveCategory (CategorySaveDto categorySaveDto) {
 
         Category category;
+        CategoryDto categoryDto = new CategoryDto();
+
+        categoryDto.setName(categorySaveDto.getName());
+        categoryDto.setParentCategoryId(categorySaveDto.getParentCategoryId());
+
+        if(categorySaveDto.getName().toUpperCase().equals("ROOT")){
+            throw new RuntimeException("카테고리명을 'ROOT' 로 설정 할 수 없습니다.");
+        }
 
         if (categoryDto.getParentCategoryId() == null || categoryDto.getParentCategoryId().equals("")) { //부모카테고리 입력 없을 시 > root 카테고리조회
             //최상위 root 조회, 없으면 신규생성
@@ -70,10 +72,8 @@ public class CategoryService {
             category.setLevel(parentCategory.getLevel() + 1);
             //신규카테고리의 부모카테고리 설정
             category.setParentCategory(parentCategory);
-            //부모카테고리 하위에 신규카테고리 생성
-            //parentCategory.getSubCategory().add(category);
         }
-        //category.setLive(true);
+
         //카테고리 저장
         return categoryRepository.save(category).getId();
     }
@@ -94,20 +94,20 @@ public class CategoryService {
     }
 
     //카테고리 수정
-    public Long updateCategory (CategoryDto categoryDto) {
-        Category category = findCategory(categoryDto.getId());
+    public Long updateCategory (CategoryUpdateDto categoryUpdateDto) {
+        Category category = findCategory(categoryUpdateDto.getId());
         //카테고리명 수정
 
-        if(categoryRepository.existsByNameAndParentCategory(categoryDto.getName(), category.getParentCategory())){
+        if(categoryRepository.existsByNameAndParentCategory(categoryUpdateDto.getName(), category.getParentCategory())){
             throw new RuntimeException("상위카테고리 하위에 동일한 이름의 카테고리가 있습니다.");
         }
-        category.setName(categoryDto.getName());
+        category.setName(categoryUpdateDto.getName());
         return category.getId();
     }
 
     //카테고리 삭제
-    public void deleteCategory (CategoryDto categoryDto) {
-        Category category = findCategory(categoryDto.getId());
+    public void deleteCategory (CategoryDeleteDto categoryDeleteDto) {
+        Category category = findCategory(categoryDeleteDto.getId());
         if (category.getSubCategory().size() == 0) { //하위 카테고리 없을 경우
             categoryRepository.deleteById(category.getId());
         } else {    //하위 카테고리 있을 경우

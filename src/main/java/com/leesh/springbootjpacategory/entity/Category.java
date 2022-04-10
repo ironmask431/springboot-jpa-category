@@ -24,6 +24,7 @@ public class Category {
     private String name;
 
     //카테고리 레벨
+    @Column (nullable = false)
     private Integer level;
 
     //상위카테고리
