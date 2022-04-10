@@ -1,11 +1,9 @@
-package com.example.springbootjpacategory.controller;
+package com.leesh.springbootjpacategory.controller;
 
-import com.example.springbootjpacategory.dto.CategoryDto;
-import com.example.springbootjpacategory.service.CategoryService;
+import com.leesh.springbootjpacategory.dto.CategoryDto;
+import com.leesh.springbootjpacategory.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
 
 @RequiredArgsConstructor
 @RestController

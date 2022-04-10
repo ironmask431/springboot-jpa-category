@@ -1,11 +1,10 @@
-package com.example.springbootjpacategory.dto;
+package com.leesh.springbootjpacategory.dto;
 
-import com.example.springbootjpacategory.entity.Category;
+import com.leesh.springbootjpacategory.entity.Category;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.NotNull;
 import java.util.Map;
 import java.util.stream.Collectors;
 

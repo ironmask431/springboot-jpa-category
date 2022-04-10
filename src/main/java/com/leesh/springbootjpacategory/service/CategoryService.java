@@ -1,19 +1,17 @@
-package com.example.springbootjpacategory.service;
+package com.leesh.springbootjpacategory.service;
 
-import com.example.springbootjpacategory.dto.CategoryDto;
-import com.example.springbootjpacategory.entity.Category;
-import com.example.springbootjpacategory.repository.CategoryRepository;
+import com.leesh.springbootjpacategory.dto.CategoryDto;
+import com.leesh.springbootjpacategory.entity.Category;
+import com.leesh.springbootjpacategory.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
 public class CategoryService {
+
     private final CategoryRepository categoryRepository;
 
     /**
@@ -25,7 +23,7 @@ public class CategoryService {
     public Long saveCategory (CategoryDto categoryDto) {
 
         if(categoryDto.getName().toUpperCase().equals("ROOT")){
-            throw new RuntimeException("카테고리명을 'ROOT' 로 설정할 수 없습니다.");
+            throw new RuntimeException("카테고리명을 'ROOT' 로 설정 할 수 없습니다.");
         }
 
         Category category;
@@ -113,14 +111,14 @@ public class CategoryService {
         if (category.getSubCategory().size() == 0) { //하위 카테고리 없을 경우
             categoryRepository.deleteById(category.getId());
         } else {    //하위 카테고리 있을 경우
-            throw new RuntimeException("하위 카테고리가 있어서 삭제할 수 없습니다.");
+            throw new RuntimeException("삭제하려는 카테고리에 하위 카테고리가 있어서 삭제할 수 없습니다.");
         }
     }
 
     //id로 카테고리 entity 조회
     public Category findCategory(Long id){
         Category category = categoryRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("카테고리 id가 없습니다. id="+id));
+                .orElseThrow(() -> new IllegalArgumentException("찾는 카테고리가 없습니다. id="+id));
         return category;
     }
 }

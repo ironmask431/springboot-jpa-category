@@ -1,6 +1,6 @@
-package com.example.springbootjpacategory.repository;
+package com.leesh.springbootjpacategory.repository;
 
-import com.example.springbootjpacategory.entity.Category;
+import com.leesh.springbootjpacategory.entity.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
