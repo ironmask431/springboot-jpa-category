@@ -14,7 +14,6 @@
 * ORM : JPA
 * 데이터베이스 : h2
 * 테스트 : Junit 5
-* api문서 : Swagger 2.9.2
 
 ------------
 
@@ -52,13 +51,13 @@ sudo yum install git
 ```
 git --version
 ```
-5. git clone 으로 프로젝트를 저장할 디렉토리 생성, 이동
+5. 프로젝트를 저장할 디렉토리 생성, 이동
 ```
 mkdir jpa_category/step1
 cd jpa_category/step1
 ```
 
-6. git clone 주소 복사
+6. git clone 주소 복사   
 https://github.com/ironmask431/springboot-jpa-category.git
 
 7. git clone 실행
@@ -70,10 +69,9 @@ git clone https://github.com/ironmask431/springboot-jpa-category.git
 cd springboot-jpa-category
 ll
 ```
+![001_다운로드확인](https://user-images.githubusercontent.com/48856906/162618735-28c5a143-cb70-472c-8155-d0cc277dec4a.PNG)
 
-<스샷>
-
-9. gradlew 권한 부여
+9. gradlew 에 실행 권한 부여
 ```
 chmod +x ./gradlew
 ```
@@ -81,17 +79,18 @@ chmod +x ./gradlew
 ```
 ./gradlew build
 ```
-<스샷>
+![002_빌드성공](https://user-images.githubusercontent.com/48856906/162618760-da627b3d-7104-418c-8f5e-0eeef840c197.PNG)
+
 ```
 ./gradlew test
 ```
-<스샷>
+![003_테스트성공](https://user-images.githubusercontent.com/48856906/162618767-1fad92b8-bc0d-4be3-9766-9ea024052532.PNG)
 
 11. 빌드 후 생성된 jar파일 경로로 이동, jar파일 확인
 ```
 cd build/libs/
 ```
-<스샷>
+![004_jar파일 확인](https://user-images.githubusercontent.com/48856906/162618771-b163b2e2-82fe-4c33-8d23-08b100f2f1e6.PNG)
 
 12. java -jar 또는 nohup으로 jar 파일 실행
 (java -jar로 실행 시에는 터미널 종료시 서버 중지됨.)
@@ -101,19 +100,22 @@ java -jar springboot-jpa-category-0.0.1-SNAPSHOT.jar
 ```
 nohup java -jar springboot-jpa-category-0.0.1-SNAPSHOT.jar 2>&1 1 
 ```
-13. 실행 확인
-실행서버url:8080/api/category/hello  > 접속 
+13. 실행 확인 "실행서버url:8080/api/category/hello"  > 접속    
 hello 메세지 확인 > 정상 구동 완료
 
-http://ec2-3-37-146-110.ap-northeast-2.compute.amazonaws.com:8080/api/category/hello
+![007_실행확인](https://user-images.githubusercontent.com/48856906/162618799-4d278499-d1f4-47e9-a27c-cd076c0e7b8e.PNG)
+
+14. h2-console에 접속하기 위해서는 먼저 nohup.out 파일에서 실행로그 확인   
+실행로그에서 h2-console url 정보 복사 (jdbc:h2:mem~~ )   
+
+![006_h2_db정보확인](https://user-images.githubusercontent.com/48856906/162618806-bc794b40-42d2-4765-b8dc-3945f592b3e7.PNG)
+
+ "실행서버url:8080/h2-console" 접속  
+JDBC URL 에 복사한 h2-console url을 입력 후 connect 시 h2-console 로그인 성공
+
+![008_h2접속](https://user-images.githubusercontent.com/48856906/162618823-6280848f-9862-429f-82d5-a42ffacf88d7.PNG)
+
+![009_H2로그인확인](https://user-images.githubusercontent.com/48856906/162618830-60005f51-76da-424f-8bac-15d14c805424.PNG)
 
 
-14. h2-console 접속시
-실행서버url:8080/h2-console 접속
 
-nohup.out 파일에서 실행로그 확인
-실행로그에서 h2-console url 정보 복사
-
-<스샷>
-
-에 입력 후 connect 시 h2-console 로그인 성공
