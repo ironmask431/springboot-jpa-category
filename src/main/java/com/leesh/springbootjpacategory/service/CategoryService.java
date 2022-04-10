@@ -26,11 +26,11 @@ public class CategoryService {
         categoryDto.setName(categorySaveDto.getName());
         categoryDto.setParentCategoryId(categorySaveDto.getParentCategoryId());
 
-        if(categorySaveDto.getName().toUpperCase().equals("ROOT")){
+        if(categoryDto.getName().toUpperCase().equals("ROOT")){
             throw new RuntimeException("카테고리명을 'ROOT' 로 설정 할 수 없습니다.");
         }
 
-        if (categoryDto.getParentCategoryId() == null || categoryDto.getParentCategoryId().equals("")) { //부모카테고리 입력 없을 시 > root 카테고리조회
+        if (categoryDto.getParentCategoryId() == null || categoryDto.getParentCategoryId().equals("")) { //입력된 부모카테고리 없을 시 > root 카테고리조회
             //최상위 root 조회, 없으면 신규생성
             Category rootCategory = categoryRepository.findByName("ROOT")
                     .orElseGet( () ->
@@ -78,7 +78,7 @@ public class CategoryService {
         return categoryRepository.save(category).getId();
     }
 
-    //전체 카테고리 조회 (ROOT)
+    //전체 카테고리 조회 (ROOT 카테고리 조회)
     public CategoryDto getCategoryAll () {
         Category category = categoryRepository.findByName("ROOT")
                 .orElseThrow(() -> new IllegalArgumentException("찾는 카테고리가 없습니다. name=ROOT"));
@@ -96,8 +96,6 @@ public class CategoryService {
     //카테고리 수정
     public Long updateCategory (CategoryUpdateDto categoryUpdateDto) {
         Category category = findCategory(categoryUpdateDto.getId());
-        //카테고리명 수정
-
         if(categoryRepository.existsByNameAndParentCategory(categoryUpdateDto.getName(), category.getParentCategory())){
             throw new RuntimeException("상위카테고리 하위에 동일한 이름의 카테고리가 있습니다.");
         }

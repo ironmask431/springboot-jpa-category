@@ -27,7 +27,7 @@ public class CategoryDto {
 
         if(entity.getParentCategory() == null) {
             this.parentCategoryId = null;
-            this.parentCategoryName = "ROOT";
+            this.parentCategoryName = "";
         } else {
             this.parentCategoryId = entity.getParentCategory().getId();
             this.parentCategoryName = entity.getParentCategory().getName();

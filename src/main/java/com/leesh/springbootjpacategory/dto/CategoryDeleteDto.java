@@ -10,6 +10,6 @@ import javax.validation.constraints.NotNull;
 @Setter
 @NoArgsConstructor
 public class CategoryDeleteDto {
-    @NotNull
+    @NotNull(message = "카테고리 id 가 입력되지 않았습니다.")
     private Long id;
 }

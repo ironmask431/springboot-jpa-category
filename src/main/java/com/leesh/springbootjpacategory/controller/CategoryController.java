@@ -8,6 +8,8 @@ import com.leesh.springbootjpacategory.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/category")
@@ -22,7 +24,7 @@ public class CategoryController {
 
     //카테고리 저장
     @PostMapping("/save")
-    public Long saveCategory (@RequestBody CategorySaveDto categorySaveDto) {
+    public Long saveCategory (@Valid @RequestBody CategorySaveDto categorySaveDto) {
         return categoryService.saveCategory(categorySaveDto);
     }
 
@@ -40,13 +42,13 @@ public class CategoryController {
 
     //카테고리 수정
     @PutMapping("/update")
-    public Long updateCategory (@RequestBody CategoryUpdateDto categoryUpdateDto) {
+    public Long updateCategory (@Valid @RequestBody CategoryUpdateDto categoryUpdateDto) {
         return categoryService.updateCategory(categoryUpdateDto);
     }
 
     //카테고리 삭제
     @DeleteMapping("/delete")
-    public void deleteCategory (@RequestBody CategoryDeleteDto categoryDeleteDto) {
+    public void deleteCategory (@Valid @RequestBody CategoryDeleteDto categoryDeleteDto) {
         categoryService.deleteCategory(categoryDeleteDto);
     }
 }
