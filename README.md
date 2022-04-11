@@ -1,7 +1,7 @@
 # springboot-jpa-category
 
 목적 : 
-1. JPA로 무한카테고리(하위카테고리 추가 가능) REST API 서버 만들어보기
+1. JPA로 무한 depth 카테고리 REST API 서버 만들어보기
 
 기능 :
 1. 카테고리 생성, 조회, 수정, 삭제 REST API 지원
