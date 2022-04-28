@@ -1,12 +1,12 @@
 # springboot-jpa-category
 
-목적 : 
+### 목적 : 
 1. JPA로 무한 depth 카테고리 REST API 서버 만들어보기
 
-기능 :
+### 기능 :
 1. 카테고리 생성, 조회, 수정, 삭제 REST API 지원
 
-개발환경 
+### 개발환경 
 * 언어  : java 11
 * 프레임워크  : springboot 2.6.6
 * 빌드도구  : gradle 7.4.1
