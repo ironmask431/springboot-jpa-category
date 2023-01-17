@@ -19,7 +19,8 @@
 -----------------
 ### API 문서 
 
-확인 : http://ec2-3-37-146-110.ap-northeast-2.compute.amazonaws.com:8080/swagger-ui.html#/
+확인 : http://ec2-3-37-146-110.ap-northeast-2.compute.amazonaws.com:8080/swagger-ui.html#/   
+(현재 접속불가)
 
 ![스웨거](https://user-images.githubusercontent.com/48856906/162619929-3d72f3a6-49c0-4869-9b21-16e5dc55fa28.PNG)
 
@@ -127,11 +128,11 @@ JDBC URL 에 복사한 h2-console url을 입력 후 connect 시 h2-console 로�
 ![009_H2로그인확인](https://user-images.githubusercontent.com/48856906/162618830-60005f51-76da-424f-8bac-15d14c805424.PNG)
 
 -------------
-### 부록 - 단위테스트 실행 결과
+### 단위테스트 실행 결과
 ![test완료](https://user-images.githubusercontent.com/48856906/162620673-29139990-df8e-4b7a-a96b-5244bdfee9d0.PNG)
 
 -------------
-### 부록 - API 실행결과 스샷모음
+### 전체 API 실행결과
 
 1. 카테고리 등록 - 최상위카테고리(성공)
 
