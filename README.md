@@ -1,7 +1,7 @@
 # springboot-jpa-category
 
 ### 목적 : 
-1. JPA로  계층형 카테고리 REST API 서버 만들어보기
+1. JPA를 활용하여 계층형 카테고리 REST API 서버 만들어보기
 
 ### 기능 :
 1. 계층형 카테고리 생성, 조회, 수정, 삭제 REST API
